@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/WEB-INF/templates/default.xhtml">
+    <ui:define name="content">
+        <h1>
+            <h:outputText value="#{cemeteryEditController.title}" />
+        </h1>
+
+        <h:form>
+            <h:panelGrid columns="3">
+                <f:facet name="header">Info</f:facet>
+                <h:outputLabel value="Name:"></h:outputLabel>
+                <h:inputText id="a_name" 
+                             value="#{cemeteryEditController.cemetery.name}">
+                </h:inputText>
+                <h:message for="a_name" style="color: red;" />
+
+                <h:outputLabel value="Street:"></h:outputLabel>
+                <h:inputText id="a_street" 
+                             value="#{cemeteryEditController.cemetery.street}">
+                </h:inputText>
+            </h:panelGrid>
+
+            <h:commandButton value="Save"
+                             action="#{cemeteryEditController.doSave}" />
+            <h:commandButton value="Cancel"
+                             action="#{cemeteryEditController.doCancel}" />
+        </h:form>
+
+    </ui:define>
+</ui:composition>

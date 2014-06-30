@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/WEB-INF/templates/default.xhtml">
+    <ui:define name="content">
+        <h1>
+            <h:outputText value="#{graveEditController.title}" />
+        </h1>
+
+        <h:form>
+            <h:panelGrid columns="3">
+                <f:facet name="header">Info</f:facet>
+                <h:outputLabel value="First Name:"></h:outputLabel>
+                <h:inputText id="a_firstname" 
+                             value="#{graveEditController.grave.firstname}">
+                </h:inputText>
+                <h:message for="a_firstName" style="color: red;" />
+
+                <h:outputLabel value="Last Name:"></h:outputLabel>
+                <h:inputText id="a_lastname" 
+                             value="#{graveEditController.grave.lastname}">
+                </h:inputText>
+            </h:panelGrid>
+
+            <h:commandButton value="Save"
+                             action="#{graveEditController.doSave}" />
+            <h:commandButton value="Cancel"
+                             action="#{graveEditController.doCancel}" />
+        </h:form>
+
+    </ui:define>
+</ui:composition>
