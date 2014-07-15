@@ -3,6 +3,7 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
                 template="/WEB-INF/templates/default.xhtml">
     <ui:define name="content">
         <h1>Graves in
@@ -10,34 +11,37 @@
         </h1>
 
         <h:form>
-            <h:dataTable value="#{graveListController.graves}" var="grave">
-                <h:column>
+            <p:dataTable value="#{graveListController.graves}" var="grave">
+                <p:column>
                     <h:commandLink value = "x"
                                    actionListener= "#{graveListController.doDeleteGrave(grave)}" />
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="First Name" />
-                    </f:facet>
+                </p:column>
+                <p:column headerText="First Name">
                     <h:outputText value="#{grave.firstname}" />
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Last Name" />
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Last Name">
                     <h:outputText value="#{grave.lastname}" />
-                </h:column>
-                <h:column>
+                </p:column>
+                <p:column headerText="Date of Birth">
+                    <h:outputText value="#{grave.datebirth}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                </p:column>
+                <p:column headerText="Date of Death">
+                    <h:outputText value="#{grave.datedeath}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                </p:column>
+                <p:column>
                     <h:commandLink value="Edit"
                                    action="#{graveListController.doEditGrave(grave)}" />
-                </h:column>
-            </h:dataTable>
-            <h:commandButton value="Add Grave"
+                </p:column>
+            </p:dataTable>
+            <p:commandButton value="Add Grave"
                              action="#{graveListController.doAddGrave}" />
             
-            <h:commandButton value="Cemeteries"
+            <p:commandButton value="Cemeteries"
                              action="#{graveListController.doOk}" />
-
         </h:form>
 
     </ui:define>

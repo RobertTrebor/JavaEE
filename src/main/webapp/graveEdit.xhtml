@@ -3,6 +3,7 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
                 template="/WEB-INF/templates/default.xhtml">
     <ui:define name="content">
         <h1>
@@ -10,23 +11,27 @@
         </h1>
 
         <h:form>
-            <h:panelGrid columns="3">
-                <f:facet name="header">Info</f:facet>
-                <h:outputLabel value="First Name:"></h:outputLabel>
-                <h:inputText id="a_firstname" 
-                             value="#{graveEditController.grave.firstname}">
-                </h:inputText>
-                <h:message for="a_firstName" style="color: red;" />
+            <h:panelGrid columns="2" cellpadding="5">
+                <p:outputLabel value="First Name" />
+                <p:inputText id="a_firstname" 
+                             value="#{graveEditController.grave.firstname}" />
 
-                <h:outputLabel value="Last Name:"></h:outputLabel>
-                <h:inputText id="a_lastname" 
-                             value="#{graveEditController.grave.lastname}">
-                </h:inputText>
+                <p:outputLabel value="Last Name" />
+                <p:inputText id="a_lastname" 
+                             value="#{graveEditController.grave.lastname}" />
+
+                <p:outputLabel value="Date of Birth" />
+                <p:calendar id="a_dateBirth"
+                             value="#{graveEditController.grave.datebirth}" />
+
+                <p:outputLabel value="Date of Death" />
+                <p:calendar id="a_dateDeath" 
+                             value="#{graveEditController.grave.datedeath}" />
             </h:panelGrid>
 
-            <h:commandButton value="Save"
+            <p:commandButton value="Save"
                              action="#{graveEditController.doSave}" />
-            <h:commandButton value="Cancel"
+            <p:commandButton value="Cancel"
                              action="#{graveEditController.doCancel}" />
         </h:form>
 
